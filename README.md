@@ -2,7 +2,10 @@
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-Sets up [standard](https://github.com/feross/standard) style for a module. Auto-installs `standard` if necessary, and then adds it to your `package.json` script field.
+Scaffolds [standard](https://github.com/feross/standard) style for a new module. 
+
+- runs `npm install --save standard`
+- adds `standard` to your `"scripts"` test
 
 PRs/suggestions welcome.
 
