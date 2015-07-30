@@ -4,7 +4,7 @@
 
 Scaffolds [standard](https://github.com/feross/standard) style for a new module. 
 
-- runs `npm install --save standard`
+- runs `npm install --save-dev standard`
 - adds `standard` to your `"scripts"` test
 
 PRs/suggestions welcome.
