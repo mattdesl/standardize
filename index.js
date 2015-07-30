@@ -2,7 +2,6 @@ var install = require('install-if-needed')
 var path = require('path')
 var fs = require('fs')
 var readJson = require('read-json')
-var assign = require('object-assign')
 
 module.exports = standardize
 
@@ -21,7 +20,7 @@ function standardize (opt, cb) {
 }
 
 function standardizePackage (file, opt, cb) {
-  opt = assign({}, opt)
+  opt = opt || {}
 
   var tool = opt.snazzy ? 'snazzy' : 'standard'
   readJson(file, function (err, data) {

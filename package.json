@@ -14,7 +14,6 @@
     "install-if-needed": "^1.0.2",
     "minimist": "^1.1.2",
     "object-assign": "^3.0.0",
-    "path-is-absolute": "^1.0.0",
     "proxyquire": "^1.6.0",
     "read-json": "^0.1.0"
   },
