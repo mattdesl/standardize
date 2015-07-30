@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "hello world",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "snazzy": "^1.0.3",
+    "standard": "^4.5.4",
+    "tape": "^4.0.1"
+  },
+  "keywords": [
+    "foo",
+    "bar",
+    "baz"
+  ],
+  "author": "Matt DesLauriers <dave.des@gmail.com>",
+  "license": "ISC"
+}
