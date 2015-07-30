@@ -23,7 +23,7 @@ Just run `standardize` on your module directory
 standardize
 ```
 
-It will add a new script field that looks like:
+It will auto-install `standard` (if you haven't already), then add a new script field that looks like:
 
 ```js
   "scripts": {
