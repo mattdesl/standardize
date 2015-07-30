@@ -1,6 +1,6 @@
 {
   "name": "standardize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "sets up standard on a new module",
   "main": "index.js",
   "license": "MIT",
