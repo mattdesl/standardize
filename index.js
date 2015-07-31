@@ -24,13 +24,14 @@ function standardize (opt, cb) {
 function standardizePackage (file, opt, cb) {
   opt = opt || {}
   var verbose = opt.verbose
-  if (verbose) {
-    console.error(check, 'updating', color.bold(file))
-  }
-  
+
   var tool = opt.snazzy ? 'snazzy' : 'standard'
   readJson(file, function (err, data) {
     if (err) return cb(new Error('could not read JSON at ' + file))
+    if (verbose) {
+      console.error(check, 'updating', color.bold(file))
+    }
+
     rewritePackage(data, file, function (err) {
       if (err) return cb(new Error('could not write package at ' + file))
       if (verbose) console.error(check, 'installing', color.bold(tool))
