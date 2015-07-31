@@ -55,4 +55,4 @@ Options:
 
 ## License
 
-MIT, see [LICENSE.md](http://github.com/Jam3/standardize/blob/master/LICENSE.md) for details.
+MIT, see [LICENSE.md](http://github.com/mattdesl/standardize/blob/master/LICENSE.md) for details.
