@@ -9,6 +9,8 @@ Scaffolds [standard](https://github.com/feross/standard) style for a new module.
 
 PRs/suggestions welcome.
 
+<img src="http://i.imgur.com/sdfTwLC.png" width="80%" />
+
 ## Install
 
 ```sh
@@ -23,7 +25,7 @@ Just run `standardize` on your module directory
 standardize
 ```
 
-It will auto-install `standard` (if you haven't already), then add a new script field that looks like:
+It will auto-install `standard` (if it isn't already installed), then add a new script field that looks like:
 
 ```js
   "scripts": {
@@ -39,7 +41,7 @@ If the existing script starts with `node` or `tape`, then `standard` will be pre
   }
 ```
 
-You can specify `standard --snazzy` if you would rather install and use [snazzy](http://npmjs.com/package/snazzy) in your module, for pretty-printing errors.
+You can specify `standard --snazzy` if you would rather install and use [snazzy](http://npmjs.com/package/snazzy) in your module, for better error reporting.
 
 ## Usage
 
@@ -53,6 +55,10 @@ Usage:
   
 Options:
   --snazzy    use a pretty-printer for standard
+  --silent    does not log anything to terminal
+  
+Example:
+  standardize --snazzy --silent
 ```
 
 ### API
@@ -75,6 +81,7 @@ standardize({
   cwd: process.cwd(),
   package: path.join(process.cwd(), 'package.json')
 }, function (err) {
+  if (err) throw err
   console.log("updated!")
 })
 ```
