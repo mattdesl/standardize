@@ -25,11 +25,8 @@ function standardizePackage (file, opt, cb) {
   var tool = opt.snazzy ? 'snazzy' : 'standard'
   readJson(file, function (err, data) {
     if (err) return cb(err)
-    transform(data)
-    var json = JSON.stringify(data, undefined, 2)
-    fs.writeFile(file, json, function (err) {
+    rewritePackage(data, file, function (err) {
       if (err) return cb(err)
-
       install({
         devDependencies: [ tool ],
         package: data,
@@ -39,7 +36,20 @@ function standardizePackage (file, opt, cb) {
     })
   })
 
+  function rewritePackage (data, file, cb) {
+    var changed = transform(data)
+    if (changed) {
+      var json = JSON.stringify(data, undefined, 2)
+      fs.writeFile(file, json, cb)
+    } else {
+      // don't touch the file if no change is needed
+      process.nextTick(cb)
+    }
+  }
+
   function transform (pkg) {
+    var oldTest = pkg.scripts && pkg.scripts.test
+
     if (!pkg.scripts) {
       pkg.scripts = {
         test: tool
@@ -54,5 +64,6 @@ function standardizePackage (file, opt, cb) {
     } else {
       pkg.scripts.test = tool
     }
+    return oldTest !== pkg.scripts.test
   }
 }
