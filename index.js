@@ -2,6 +2,7 @@ var install = require('install-if-needed')
 var path = require('path')
 var fs = require('fs')
 var readJson = require('read-json')
+var check = '\u2714'
 
 module.exports = standardize
 
@@ -21,28 +22,36 @@ function standardize (opt, cb) {
 
 function standardizePackage (file, opt, cb) {
   opt = opt || {}
-
+  var verbose = opt.verbose
+  if (verbose) {
+    console.error(check, 'updating', file)
+  }
+  
   var tool = opt.snazzy ? 'snazzy' : 'standard'
   readJson(file, function (err, data) {
-    if (err) return cb(err)
+    if (err) return cb(new Error('could not read JSON at ' + file))
     rewritePackage(data, file, function (err) {
-      if (err) return cb(err)
+      if (err) return cb(new Error('could not write package at ' + file))
+      console.error(check, 'installing', tool)
       install({
         devDependencies: [ tool ],
         package: data,
         stdio: 'inherit',
         save: true
-      }, cb)
+      }, function (err) {
+        if (err) return cb(new Error('error installing ' + tool))
+        cb(null)
+      })
     })
   })
 
   function rewritePackage (data, file, cb) {
+    // only write to file if we changed data
     var changed = transform(data)
     if (changed) {
-      var json = JSON.stringify(data, undefined, 2)
+      var json = JSON.stringify(data, undefined, 2) + '\n'
       fs.writeFile(file, json, cb)
     } else {
-      // don't touch the file if no change is needed
       process.nextTick(cb)
     }
   }
@@ -64,6 +73,10 @@ function standardizePackage (file, opt, cb) {
     } else {
       pkg.scripts.test = tool
     }
-    return oldTest !== pkg.scripts.test
+    var changed = oldTest !== pkg.scripts.test
+    if (verbose && changed) {
+      console.error(check, 'updating script:', JSON.stringify(pkg.scripts.test))
+    }
+    return changed
   }
 }
