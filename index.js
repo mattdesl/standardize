@@ -39,8 +39,8 @@ function standardizePackage (file, opt, cb) {
         cwd: opt.cwd,
         devDependencies: [ tool ],
         package: data,
-        stdio: 'inherit',
-        save: true
+        save: true,
+        stdio: verbose ? 'inherit' : undefined
       }, function (err) {
         if (err) return cb(new Error('error installing ' + tool))
         cb(null)

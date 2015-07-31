@@ -1,0 +1,14 @@
+{
+  "name": "some-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Matt DesLauriers <dave.des@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^4.5.4"
+  }
+}

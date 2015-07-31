@@ -63,7 +63,7 @@ Standardizes the module at `process.cwd()` and calls `cb(err)` when finished. Op
 
 - `cwd` the base directory to install from
 - `package` the `package.json` path, defaults to `path.join(cwd, 'package.json')`
-- `verbose` whether to print updates to `stderr` (default false)
+- `verbose` whether to print install and update information to `stderr` (default false)
 
 Example:
 
