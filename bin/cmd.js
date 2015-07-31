@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 var argv = require('minimist')(process.argv.slice(2), {
-  default: { 'verbose': false },
+  default: { 'verbose': true },
   boolean: [ 'verbose', 'snazzy' ]
 })
-var chalk = require('chalk')
+var color = require('term-color')
 
 require('../')(argv, function (err) {
   if (err) {
-    console.error(chalk.red('ERROR:'), err.message)
+    console.error(color.red('ERROR:'), err.message)
   }
 })
