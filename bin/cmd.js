@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var argv = require('minimist')(process.argv.slice(2), {
-  default: { 'verbose': true },
+  default: { 'verbose': false },
   boolean: [ 'verbose', 'snazzy' ]
 })
 var chalk = require('chalk')
