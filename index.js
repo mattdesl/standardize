@@ -35,6 +35,7 @@ function standardizePackage (file, opt, cb) {
       if (err) return cb(new Error('could not write package at ' + file))
       if (verbose) console.error(check, 'installing', color.bold(tool))
       install({
+        cwd: opt.cwd,
         devDependencies: [ tool ],
         package: data,
         stdio: 'inherit',

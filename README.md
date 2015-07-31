@@ -45,12 +45,38 @@ You can specify `standard --snazzy` if you would rather install and use [snazzy]
 
 [![NPM](https://nodei.co/npm/standardize.png)](https://www.npmjs.com/package/standardize)
 
+### CLI
+
 ```sh
 Usage:
   standardize [opts]
   
 Options:
   --snazzy    use a pretty-printer for standard
+```
+
+### API
+
+#### `standardize([opt], cb)`
+
+Standardizes the module at `process.cwd()` and calls `cb(err)` when finished. Options:
+
+- `cwd` the base directory to install from
+- `package` the `package.json` path, defaults to `path.join(cwd, 'package.json')`
+- `verbose` whether to print updates to `stderr` (default false)
+
+Example:
+
+```js
+var standardize = require('standardize')
+var path = require('path')
+
+standardize({
+  cwd: process.cwd(),
+  package: path.join(process.cwd(), 'package.json')
+}, function (err) {
+  console.log("updated!")
+})
 ```
 
 ## License
