@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var argv = require('minimist')(process.argv.slice(2), {
-  boolean: [ 'silent', 'snazzy' ]
+  boolean: [ 'silent', 'snazzy', 'semi' ]
 })
 var color = require('term-color')
 

@@ -26,6 +26,7 @@ function standardizePackage (file, opt, cb) {
   var verbose = opt.verbose
 
   var tool = opt.snazzy ? 'snazzy' : 'standard'
+  if (opt.semi) tool = 'semistandard'
   readJson(file, function (err, data) {
     if (err) return cb(new Error('could not read JSON at ' + file))
     if (verbose) {

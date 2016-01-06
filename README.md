@@ -41,7 +41,11 @@ If the existing script starts with `node` or `tape`, then `standard` will be pre
   }
 ```
 
-You can specify `standard --snazzy` if you would rather install and use [snazzy](http://npmjs.com/package/snazzy) in your module, for better error reporting.
+You can specify `standardize --snazzy` if you would rather install and use [snazzy](http://npmjs.com/package/snazzy) in your module, for better error reporting.
+
+## semistandard
+
+You can use `standardize --semi` to install `semistandard` instead of `standard`.
 
 ## Usage
 

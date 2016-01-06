@@ -9,6 +9,6 @@
   "author": "Matt DesLauriers <dave.des@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "standard": "^4.5.4"
+    "standard": "^5.4.1"
   }
 }
