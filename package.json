@@ -12,7 +12,7 @@
   "dependencies": {
     "install-if-needed": "^1.0.2",
     "minimist": "^1.1.2",
-    "read-json": "^0.1.0",
+    "read-json": "^1.0.0",
     "term-color": "^1.0.1"
   },
   "devDependencies": {
