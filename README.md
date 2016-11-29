@@ -2,44 +2,47 @@
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
-Scaffolds [standard](https://github.com/feross/standard) style for a new module. 
+Sets up [standard](https://github.com/feross/standard) style.
 
-- runs `npm install --save-dev standard`
-- adds `standard` to your `"scripts"` test
+## Usage
 
-PRs/suggestions welcome.
-
-<img src="http://i.imgur.com/sdfTwLC.png" width="80%" />
-
-## Install
-
-```sh
-npm install standardize -g
+```console
+$ npm -g install standardize
+$ cd non/standard/project
+$ standardize
 ```
 
-## Example
+In `package.json`, the following is prepended to the `test` npm script: `npm run lint &&`.
 
-Just run `standardize` on your module directory
+Then, the project is linted with Standard, and:
 
-```sh
-standardize
-```
+### If passed:
 
-It will auto-install `standard` (if it isn't already installed), then add a new script field that looks like:
+- installs and saved as dev-dependency: `standard`
+- in `package.json`:
+  - adds an npm script: `"lint": "standard"`
+  - prepends to `test` npm script: `npm run lint`
+- undoes what it did when Standard did not pass (below)
 
-```js
-  "scripts": {
-    "test": "standard"
-  }
-```
+### If did not pass:
 
-If the existing script starts with `node` or `tape`, then `standard` will be prefixed like so:
+- installs and saves as a dev-dependency:
+  - `eslint`
+  - `eslint-config-standard` and its peer-dependencies
+- sets up an `.eslintrc.json` that:
+  - extends `eslint-config-standard`
+  - excludes all of the rules that didn’t pass
+- in `package.json` adds an npm script `"lint": "eslint **/*.js"`
 
-```js
-  "scripts": {
-    "test": "standard && node test.js"
-  }
-```
+### Suggested workflow after that
+
+1. Remove a single rule exclusion from `.eslintrc.json`.
+1. Run `npm run lint`.
+1. Fix the errors.
+1. Repeat.
+1. When all of the exclusions are removed and fixed run `standardize` again.
+
+## For pretty output
 
 You can specify `standardize --snazzy` if you would rather install and use [snazzy](http://npmjs.com/package/snazzy) in your module, for better error reporting.
 
@@ -47,7 +50,7 @@ You can specify `standardize --snazzy` if you would rather install and use [snaz
 
 You can use `standardize --semi` to install `semistandard` instead of `standard`.
 
-## Usage
+## Usage stats
 
 [![NPM](https://nodei.co/npm/standardize.png)](https://www.npmjs.com/package/standardize)
 
